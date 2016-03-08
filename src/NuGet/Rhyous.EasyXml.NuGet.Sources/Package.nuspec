@@ -15,7 +15,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/rhyous/EasyXml/blob/master/LICENSE</licenseUrl>
     <copyright>Copyright Jared Barneck (Rhyous) 2015</copyright>
-    <tags>command line arguments parameters args</tags>
+    <tags>xml utf8 encoding serialize deserialize easy</tags>
   </metadata>
   <files>
     <file src="content\" target="content" />
