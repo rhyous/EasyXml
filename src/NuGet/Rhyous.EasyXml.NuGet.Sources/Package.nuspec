@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>EasyXml.Sources</id>
+    <version>1.0.0</version>
+    <title>EasyXml.Sources</title>
+    <authors>Jared Barneck (Rhyous)</authors>
+    <owners>Jared Barneck (Rhyous)</owners>
+    <description>Easy coding of Xml. This NuGet package adds Xml features, such as Pretty, Linearize, serialize, deserialize, etc.</description>
+    <releaseNotes>https://github.com/rhyous/SimpleArgs/blob/master/ReleaseNotes.txt</releaseNotes>
+    <summary>Easy coding of Xml.</summary>
+    <language>en-US</language>
+    <projectUrl>https://github.com/rhyous/EasyXml</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/rhyous/EasyXml/master/EasyXml.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/rhyous/EasyXml/blob/master/LICENSE</licenseUrl>
+    <copyright>Copyright Jared Barneck (Rhyous) 2015</copyright>
+    <tags>command line arguments parameters args</tags>
+  </metadata>
+  <files>
+    <file src="content\" target="content" />
+    <file src="src\" target="src" />
+    <file src="tools\" target="tools" />
+  </files>
+</package>
