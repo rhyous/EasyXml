@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="content\" />
-    <Folder Include="src\App_Packages\EasyXml.Sources.1.0.0\" />
+    <Folder Include="src\App_Packages\EasyXml.Sources.1.0.1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="exclude.txt" />
