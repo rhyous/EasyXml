@@ -1,28 +1,44 @@
 ﻿namespace Rhyous.EasyXml
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Text;
     using System.Threading;
     using System.Xml;
     using System.Xml.Serialization;
 
-    [ExcludeFromCodeCoverage]
-    public static class Serializer
+    public class Serializer : IEasyXmlSerializer
     {
+        #region Singleton
+        public static IEasyXmlSerializer Instance
+        {
+            get
+            {
+                if (_Instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (_Instance == null)
+                            return (_Instance = new Serializer());
+                    }
+                }
+                return _Instance;
+            }
+            set { _Instance = value; } // Available for dependency injection
+        }
+
+        private static volatile IEasyXmlSerializer _Instance;
+        private static object syncRoot = new Object();
+
+        private Serializer()
+        {
+        }
+        #endregion
+
         #region Functions
 
-        /// <summary>
-        /// This function writes the serialized XML to the file name passed in.
-        /// </summary>
-        /// <typeparam name="T">The object type to serialize.</typeparam>
-        /// <param name="t">The instance of the object.</param>
-        /// <param name="outFilename">The file name. It can be a full path.</param>
-        /// <param name="inOmitXmlDeclaration"></param>
-        /// <param name="inNameSpaces"></param>
-        /// <param name="inEncoding"></param>
-        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        /// <inheritdoc />
+        public void ToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
         {
             MakeDirectoryPath(outFilename);
             var ns = inNameSpaces;
@@ -40,10 +56,11 @@
             textWriter.Close();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="outFilename"></param>
+        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        {
+            Instance.ToXml(t, outFilename, inOmitXmlDeclaration, inNameSpaces, inEncoding);
+        }
+
         private static void MakeDirectoryPath(string outFilename)
         {
             var dir = Path.GetDirectoryName(outFilename);
@@ -53,15 +70,8 @@
             }
         }
 
-        /// <summary>
-        /// This function returns the serialized XML as a string
-        /// </summary>
-        /// <typeparam name="T">The object type to serialize.</typeparam>
-        /// <param name="t">The instance of the object.</param>
-        /// <param name="inOmitXmlDeclaration"></param>
-        /// <param name="inNameSpaces"></param>
-        /// <param name="inEncoding"></param>
-        public static string SerializeToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        /// <inheritdoc />
+        public string ToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
         {
             var ns = inNameSpaces;
             if (ns == null)
@@ -78,13 +88,13 @@
             return textWriter.ToString();
         }
 
-        /// <summary>
-        /// This function deserializes the XML file passed in.
-        /// </summary>
-        /// <typeparam name="T">The object type to serialize.</typeparam>
-        /// <param name="inFilename">The file or full path to the file.</param>
-        /// <returns>The object that was deserialized from xml.</returns>
-        public static T DeserializeFromXml<T>(String inFilename)
+        public string SerializeToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        {
+            return Instance.ToXml(t, inOmitXmlDeclaration, inNameSpaces, inEncoding);
+        }
+
+        /// <inheritdoc />
+        public T FromXml<T>(String inFilename)
         {
             if (string.IsNullOrWhiteSpace(inFilename))
             {
@@ -109,13 +119,13 @@
             throw new FileNotFoundException(inFilename);
         }
 
-        /// <summary>
-        /// This function deserializes the XML string passed in.
-        /// </summary>
-        /// <typeparam name="T">The object type to serialize.</typeparam>
-        /// <param name="inString">The string containing the XML.</param>
-        /// <returns>The object that was deserialized from xml.</returns>
-        public static T DeserializeFromXml<T>(ref string inString)
+        public static T DeserializeFromXml<T>(string inFilename)
+        {
+            return Instance.FromXml<T>(inFilename);
+        }
+
+        /// <inheritdoc />
+        public T FromXml<T>(ref string inString)
         {
             if (string.IsNullOrWhiteSpace(inString))
             {
@@ -127,23 +137,12 @@
             textReader.Close();
             return retVal;
         }
-        #endregion
 
-        #region UTF8StringWriter
-        public sealed class Utf8StringWriter : StringWriter
+        public static T DeserializeFromXml<T>(ref string inString)
         {
-            public override Encoding Encoding { get { return Encoding.UTF8; } }
+            return Instance.FromXml<T>(ref inString);
         }
 
-        public sealed class Utf8StreamWriter : StreamWriter
-        {
-            public Utf8StreamWriter(string file)
-                : base(file)
-            {
-            }
-
-            public override Encoding Encoding { get { return Encoding.UTF8; } }
-        }
         #endregion
     }
 }

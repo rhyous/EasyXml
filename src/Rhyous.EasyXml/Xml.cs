@@ -14,12 +14,12 @@ namespace Rhyous.EasyXml
         }
 
         /// <summary>
-        /// And enumeration to select UTF8 or UTF16 encoding. This is used because the defautl UTF8 
+        /// And enumeration to select UTF8 or UTF16 encoding. This is used because the default UTF8 
         /// and Unicode encoding types don't capitalize the UTF characters in the Xml declaration.
         /// </summary>
         public enum XmlEncoding
         {
-            UTF8, // By being first it is the default
+            UTF8, // By being first, it is the default
             UTF16
         };
 
@@ -178,79 +178,6 @@ namespace Rhyous.EasyXml
             var fullclean = Regex.Replace(clean75, @"\s+<", "<");
 
             return fullclean;
-        }
-
-        /// <summary>
-        /// This clas allows for the Xml to be created with the Xml declaration saying UTF-8
-        /// </summary>
-        private sealed class StringWriterWithEncoding : StringWriter
-        {
-            private readonly Encoding _Encoding;
-
-            public StringWriterWithEncoding(StringBuilder builder, Encoding encoding)
-                : base(builder)
-            {
-                _Encoding = encoding;
-            }
-
-            public override Encoding Encoding
-            {
-                get { return _Encoding; }
-            }
-        }
-
-        /// <summary>
-        /// This class makes the UTF-8 text in the Xml declaration show up capitalized.
-        /// </summary>
-        private sealed class XmlUTF8Encoding : UTF8Encoding
-        {
-            public override string WebName
-            {
-                get { return base.WebName.ToUpper(); }
-            }
-
-            public override string HeaderName
-            {
-                get { return base.HeaderName.ToUpper(); }
-            }
-
-            public override string BodyName
-            {
-                get { return base.BodyName.ToUpper(); }
-            }
-
-            public static XmlUTF8Encoding Instance
-            {
-                get { return _XmlUTF8Encoding ?? (_XmlUTF8Encoding = new XmlUTF8Encoding()); }
-            }
-            private static XmlUTF8Encoding _XmlUTF8Encoding;
-        }
-
-        /// <summary>
-        /// This class makes the UTF-16 text in the Xml declaration show up capitalized.
-        /// </summary>
-        private sealed class XmlUnicode : UnicodeEncoding
-        {
-            public override string WebName
-            {
-                get { return base.WebName.ToUpper(); }
-            }
-
-            public override string HeaderName
-            {
-                get { return base.HeaderName.ToUpper(); }
-            }
-
-            public override string BodyName
-            {
-                get { return base.BodyName.ToUpper(); }
-            }
-
-            public static XmlUnicode Instance
-            {
-                get { return _XmlUnicode ?? (_XmlUnicode = new XmlUnicode()); }
-            }
-            private static XmlUnicode _XmlUnicode;
         }
     }
 }
