@@ -234,3 +234,12 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+#backup files
+*.bak
+
+#dll files
+*.dll
+
+# App_Packages
+App_Packages/
