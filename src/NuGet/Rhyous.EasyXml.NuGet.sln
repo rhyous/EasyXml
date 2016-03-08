@@ -4,10 +4,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.EasyXml.NuGet", "Rhyous.EasyXml.NuGet\Rhyous.EasyXml.NuGet.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE497B86-5762-441E-B7A8-4B84DF52B723} = {EE497B86-5762-441E-B7A8-4B84DF52B723}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.EasyXml.NuGet.Sources", "Rhyous.EasyXml.NuGet.Sources\Rhyous.EasyXml.NuGet.Sources.csproj", "{6A8E16B8-CB46-4401-98EE-D4F879FBE597}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.EasyXml", "..\Rhyous.EasyXml\Rhyous.EasyXml.csproj", "{EE497B86-5762-441E-B7A8-4B84DF52B723}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{D499F8E9-900D-4EF7-92F5-0FFF6011CCC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{ACCECE36-4154-4852-B4D7-0E87CDEC3D89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.EasyXml.Tests", "..\Unit Tests\Rhyous.EasyXml.Tests\Rhyous.EasyXml.Tests.csproj", "{EA204F8E-2FF1-4E28-B380-1D1A3C99CF23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,8 +34,17 @@ Global
 		{EE497B86-5762-441E-B7A8-4B84DF52B723}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE497B86-5762-441E-B7A8-4B84DF52B723}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE497B86-5762-441E-B7A8-4B84DF52B723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA204F8E-2FF1-4E28-B380-1D1A3C99CF23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA204F8E-2FF1-4E28-B380-1D1A3C99CF23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA204F8E-2FF1-4E28-B380-1D1A3C99CF23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA204F8E-2FF1-4E28-B380-1D1A3C99CF23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389} = {D499F8E9-900D-4EF7-92F5-0FFF6011CCC8}
+		{6A8E16B8-CB46-4401-98EE-D4F879FBE597} = {D499F8E9-900D-4EF7-92F5-0FFF6011CCC8}
+		{EA204F8E-2FF1-4E28-B380-1D1A3C99CF23} = {ACCECE36-4154-4852-B4D7-0E87CDEC3D89}
 	EndGlobalSection
 EndGlobal
