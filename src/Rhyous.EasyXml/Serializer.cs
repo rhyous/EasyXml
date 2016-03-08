@@ -88,7 +88,7 @@
             return textWriter.ToString();
         }
 
-        public string SerializeToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        public static string SerializeToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
         {
             return Instance.ToXml(t, inOmitXmlDeclaration, inNameSpaces, inEncoding);
         }
