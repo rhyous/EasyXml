@@ -8,73 +8,12 @@ namespace Rhyous.EasyXml.Tests
     public class XmlTests
     {
         public string LinearUtf8Xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Person><FirstName>John</FirstName><MiddleName>Al Leon</MiddleName><LastName>Doe</LastName></Person>";
-        public string PrettyUtf8Xml =
-@"<?xml version=""1.0"" encoding=""UTF-8""?>
-<Person>
-  <FirstName>John</FirstName>
-  <MiddleName>Al Leon</MiddleName>
-  <LastName>Doe</LastName>
-</Person>";
-        public string PrettyUtf8XmlWithTabs =
-@"<?xml version=""1.0"" encoding=""UTF-8""?>
-<Person>
-	<FirstName>John</FirstName>
-	<MiddleName>Al Leon</MiddleName>
-	<LastName>Doe</LastName>
-</Person>";
-        public string UglyUtf8Xml =
-@"<?xml version=""1.0""
-encoding=""UTF-8""?>
-<Person>
-
-<FirstName>
-    John
-        </FirstName>
-
-<MiddleName>
-    Al
-    Leon
-                </MiddleName>
-  <LastName>
-    
-
-
-Doe
-        </LastName>
-
-
-</Person>";
-
+        public string PrettyUtf8Xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Person>\r\n  <FirstName>John</FirstName>\r\n  <MiddleName>Al Leon</MiddleName>\r\n  <LastName>Doe</LastName>\r\n</Person>";
+        public string PrettyUtf8XmlWithTabs = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Person>\r\n\t<FirstName>John</FirstName>\r\n\t<MiddleName>Al Leon</MiddleName>\r\n\t<LastName>Doe</LastName>\r\n</Person>";
+        public string UglyUtf8Xml = "<?xml version=\"1.0\"\r\nencoding=\"UTF-8\"?>\r\n<Person>\r\n\r\n<FirstName>\r\n    John\r\n        </FirstName>\r\n\r\n<MiddleName>\r\n    Al\r\n    Leon\r\n                </MiddleName>\r\n  <LastName>\r\n    \r\n\r\n\r\nDoe\r\n        </LastName>\r\n\r\n\r\n</Person>";
         public string LinearUtf16Xml = "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Person><FirstName>John</FirstName><MiddleName>Al Leon</MiddleName><LastName>Doe</LastName></Person>";
-        public string PrettyUtf16Xml =
-@"<?xml version=""1.0"" encoding=""UTF-16""?>
-<Person>
-  <FirstName>John</FirstName>
-  <MiddleName>Al Leon</MiddleName>
-  <LastName>Doe</LastName>
-</Person>";
-        public string UglyUtf16Xml =
-@"<?xml version=""1.0""
-encoding=""UTF-16""?>
-<Person>
-
-<FirstName>
-    John
-        </FirstName>
-
-<MiddleName>
-    Al
-    Leon
-                </MiddleName>
-  <LastName>
-    
-
-
-Doe
-        </LastName>
-
-
-</Person>";
+        public string PrettyUtf16Xml = "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\r\n<Person>\r\n  <FirstName>John</FirstName>\r\n  <MiddleName>Al Leon</MiddleName>\r\n  <LastName>Doe</LastName>\r\n</Person>";
+        public string UglyUtf16Xml = "<?xml version=\"1.0\"\r\nencoding=\"UTF-16\"?>\r\n<Person>\r\n\r\n<FirstName>\r\n    John\r\n        </FirstName>\r\n\r\n<MiddleName>\r\n    Al\r\n    Leon\r\n                </MiddleName>\r\n  <LastName>\r\n    \r\n\r\n\r\nDoe\r\n        </LastName>\r\n\r\n\r\n</Person>";
 
         [TestMethod]
         public void TestMethodLinearize()
