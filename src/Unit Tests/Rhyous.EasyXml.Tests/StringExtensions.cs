@@ -1,4 +1,7 @@
-﻿using System;
+﻿// This string extension method test helper wasobtained from here:
+// https://gist.github.com/Haacked/1610603
+
+using System;
 using System.Globalization;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
