@@ -25,7 +25,7 @@ namespace Rhyous.EasyXml.Tests
             var actual = xml.LinearizeXml;
 
             // Assert
-            LinearUtf8Xml.ShouldEqualWithDiff(actual);
+            actual.ShouldEqualWithDiff(LinearUtf8Xml);
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace Rhyous.EasyXml.Tests
             var actual = xml.PrettyXml;
 
             // Assert
-            PrettyUtf8Xml.ShouldEqualWithDiff(actual);
+            actual.ShouldEqualWithDiff(PrettyUtf8Xml);
         }
 
         [TestMethod]
@@ -51,7 +51,7 @@ namespace Rhyous.EasyXml.Tests
             var actual = xml.LinearizeXml;
 
             // Assert
-            LinearUtf8Xml.ShouldEqualWithDiff(actual);
+            actual.ShouldEqualWithDiff(LinearUtf8Xml);
         }
 
         [TestMethod]
@@ -64,7 +64,7 @@ namespace Rhyous.EasyXml.Tests
             var actual = xml.PrettyXml;
 
             // Assert
-            PrettyUtf8Xml.ShouldEqualWithDiff(actual);
+            actual.ShouldEqualWithDiff(PrettyUtf8Xml);
         }
 
         [TestMethod]
@@ -80,7 +80,7 @@ namespace Rhyous.EasyXml.Tests
             var actual = xml.LinearizeXml;
 
             // Assert
-            LinearUtf16Xml.ShouldEqualWithDiff(actual);
+            actual.ShouldEqualWithDiff(LinearUtf16Xml);
         }
 
         [TestMethod]
@@ -96,7 +96,7 @@ namespace Rhyous.EasyXml.Tests
             var actual = xml.PrettyXml;
 
             // Assert
-            PrettyUtf16Xml.ShouldEqualWithDiff(actual);
+            actual.ShouldEqualWithDiff(PrettyUtf16Xml);
         }
 
         [TestMethod]
@@ -156,7 +156,7 @@ namespace Rhyous.EasyXml.Tests
             var actual = xml.PrettyXml;
 
             // Assert
-            PrettyUtf8XmlWithTabs.ShouldEqualWithDiff(actual);
+            actual.ShouldEqualWithDiff(PrettyUtf8XmlWithTabs);
         }
 
         [TestMethod]
