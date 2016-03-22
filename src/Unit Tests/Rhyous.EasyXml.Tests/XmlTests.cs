@@ -86,7 +86,7 @@ Doe
             var actual = xml.LinearizeXml;
 
             // Assert
-            Assert.AreEqual(LinearUtf8Xml, actual);
+            LinearUtf8Xml.ShouldEqualWithDiff(actual);
         }
 
         [TestMethod]
@@ -99,7 +99,7 @@ Doe
             var actual = xml.PrettyXml;
 
             // Assert
-            Assert.AreEqual(PrettyUtf8Xml, actual);
+            PrettyUtf8Xml.ShouldEqualWithDiff(actual);
         }
 
         [TestMethod]
@@ -112,7 +112,7 @@ Doe
             var actual = xml.LinearizeXml;
 
             // Assert
-            Assert.AreEqual(LinearUtf8Xml, actual);
+            LinearUtf8Xml.ShouldEqualWithDiff(actual);
         }
 
         [TestMethod]
@@ -125,7 +125,7 @@ Doe
             var actual = xml.PrettyXml;
 
             // Assert
-            Assert.AreEqual(PrettyUtf8Xml, actual);
+            PrettyUtf8Xml.ShouldEqualWithDiff(actual);
         }
 
         [TestMethod]
@@ -141,7 +141,7 @@ Doe
             var actual = xml.LinearizeXml;
 
             // Assert
-            Assert.AreEqual(LinearUtf16Xml, actual);
+            LinearUtf16Xml.ShouldEqualWithDiff(actual);
         }
 
         [TestMethod]
@@ -157,7 +157,7 @@ Doe
             var actual = xml.PrettyXml;
 
             // Assert
-            Assert.AreEqual(PrettyUtf16Xml, actual);
+            PrettyUtf16Xml.ShouldEqualWithDiff(actual);
         }
 
         [TestMethod]
@@ -205,7 +205,7 @@ Doe
         }
 
         [TestMethod]
-        public void TestMethodPrettyWuthTabs()
+        public void TestMethodPrettyWithTabs()
         {
             // Arrange
             Xml xml = new Xml(LinearUtf8Xml)
@@ -217,7 +217,7 @@ Doe
             var actual = xml.PrettyXml;
 
             // Assert
-            Assert.AreEqual(PrettyUtf8XmlWithTabs, actual);
+            PrettyUtf8XmlWithTabs.ShouldEqualWithDiff(actual);
         }
 
         [TestMethod]
