@@ -18,7 +18,6 @@
     <tags>xml utf8 encoding serialize deserialize easy</tags>
   </metadata>
   <files>
-    <file src="content\" target="content" />
     <file src="src\" target="src" />
     <file src="tools\" target="tools" />
   </files>
