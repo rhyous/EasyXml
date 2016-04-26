@@ -1,4 +1,4 @@
-﻿# Runs every time a package is uninstalled
+﻿# Runs every time a package is installed
 
 param($installPath, $toolsPath, $package, $project)
 
