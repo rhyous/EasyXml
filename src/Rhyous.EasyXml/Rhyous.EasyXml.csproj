@@ -46,6 +46,7 @@
     <Compile Include="Interfaces\IEasyXmlSerializer.cs" />
     <Compile Include="Interfaces\ISerializeToXml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializableDictionary.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="Encoding\StringWriterWithEncoding.cs" />
     <Compile Include="Xml.cs" />
