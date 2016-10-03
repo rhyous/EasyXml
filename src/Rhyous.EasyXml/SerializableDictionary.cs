@@ -20,9 +20,7 @@ namespace Rhyous.EasyXml
         {
         }
         #endregion
-
-
-
+        
         #region IXmlSerializable Members
         public System.Xml.Schema.XmlSchema GetSchema()
         {
