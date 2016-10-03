@@ -16,6 +16,10 @@
     <licenseUrl>https://github.com/rhyous/EasyXml/blob/master/LICENSE</licenseUrl>
     <copyright>Copyright Jared Barneck (Rhyous) 2015</copyright>
     <tags>xml utf8 encoding serialize deserialize easy</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Xml" />
+      <frameworkAssembly assemblyName="System.Xml.Linq" />
+    </frameworkAssemblies>
   </metadata>
   <files>
     <file src="src\" target="src" />
