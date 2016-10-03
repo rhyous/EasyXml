@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>Rhyous.EasyXml.Sources</id>
-    <version>1.0.2.2</version>
-    <title>EasyXml.Sources</title>
+    <version>1.0.3</version>
+    <title>Rhyous.EasyXml.Sources</title>
     <authors>Jared Barneck (Rhyous)</authors>
     <owners>Jared Barneck (Rhyous)</owners>
     <description>Easy coding of Xml. This NuGet package adds Xml features, such as Pretty, Linearize, serialize, deserialize, etc.</description>
