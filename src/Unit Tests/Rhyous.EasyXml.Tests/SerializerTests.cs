@@ -21,14 +21,28 @@ namespace Rhyous.EasyXml.Tests
     public class SerializerTests
     {
         [TestMethod]
-        public void UseDefaultNamespacessTests()
+        public void UseDefaultNamespacesTests()
         {
             // Arrange
             var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
-            var expectedXml = "<? xml version =\"1.0\" encoding=\"utf-8\"?><A xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
+            var expectedXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><A xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
 
             // Act
             var xml = Serializer.Instance.ToXml(a, false, null, Encoding.UTF8, true);
+
+            // Assert
+            Assert.AreEqual(expectedXml, xml);
+        }
+
+        [TestMethod]
+        public void UseDefaultNamespacesStaticTests()
+        {
+            // Arrange
+            var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
+            var expectedXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><A xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
+
+            // Act
+            var xml = Serializer.SerializeToXml(a, false, null, Encoding.UTF8, true);
 
             // Assert
             Assert.AreEqual(expectedXml, xml);
