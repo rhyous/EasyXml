@@ -93,9 +93,9 @@
             return textWriter.ToString();
         }
 
-        public static string SerializeToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        public static string SerializeToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null, bool useDefaultNamespaces = false)
         {
-            return Instance.ToXml(t, inOmitXmlDeclaration, inNameSpaces, inEncoding);
+            return Instance.ToXml(t, inOmitXmlDeclaration, inNameSpaces, inEncoding, useDefaultNamespaces);
         }
 
         /// <inheritdoc />
