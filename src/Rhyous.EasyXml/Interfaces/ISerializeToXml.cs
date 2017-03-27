@@ -13,7 +13,7 @@ namespace Rhyous.EasyXml
         /// <param name="inOmitXmlDeclaration"></param>
         /// <param name="inNameSpaces"></param>
         /// <param name="inEncoding"></param>
-        string ToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null);
+        string ToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null, bool useDefaultNamespaces = false);
 
         /// <summary>
         /// This function writes the serialized XML to the file name passed in.
@@ -24,6 +24,6 @@ namespace Rhyous.EasyXml
         /// <param name="inOmitXmlDeclaration"></param>
         /// <param name="inNameSpaces"></param>
         /// <param name="inEncoding"></param>
-        void ToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null);
+        void ToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null, bool useDefaultNamespaces = false);
     }
 }

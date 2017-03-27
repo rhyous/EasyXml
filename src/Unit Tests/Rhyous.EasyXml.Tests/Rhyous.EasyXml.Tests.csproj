@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="StringExtensions.cs" />
     <Compile Include="SerializableDictionaryTests.cs" />
+    <Compile Include="SerializerTests.cs" />
     <Compile Include="XmlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

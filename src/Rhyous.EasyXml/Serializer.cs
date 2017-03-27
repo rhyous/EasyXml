@@ -38,11 +38,11 @@
         #region Functions
 
         /// <inheritdoc />
-        public void ToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        public void ToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null, bool useDefaultNamespaces = false)
         {
             MakeDirectoryPath(outFilename);
             var ns = inNameSpaces;
-            if (ns == null)
+            if (ns == null && !useDefaultNamespaces)
             {
                 ns = new XmlSerializerNamespaces();
                 ns.Add("", "");
@@ -56,9 +56,14 @@
             textWriter.Close();
         }
 
-        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null, bool useDefaultNamespaces = false)
         {
             Instance.ToXml(t, outFilename, inOmitXmlDeclaration, inNameSpaces, inEncoding);
+        }
+
+        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, bool useDefaultNamespaces = false, Encoding inEncoding = null)
+        {
+            Instance.ToXml(t, outFilename, inOmitXmlDeclaration, null, inEncoding, useDefaultNamespaces);
         }
 
         private static void MakeDirectoryPath(string outFilename)
@@ -71,10 +76,10 @@
         }
 
         /// <inheritdoc />
-        public string ToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        public string ToXml<T>(T t, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null, bool useDefaultNamespaces = false)
         {
             var ns = inNameSpaces;
-            if (ns == null)
+            if (ns == null && !useDefaultNamespaces)
             {
                 ns = new XmlSerializerNamespaces();
                 ns.Add("", "");
