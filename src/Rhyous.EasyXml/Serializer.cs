@@ -69,7 +69,7 @@
         private static void MakeDirectoryPath(string outFilename)
         {
             var dir = Path.GetDirectoryName(outFilename);
-            if (dir != null && !Directory.Exists(dir))
+            if (!string.IsNullOrWhiteSpace(dir) && !Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
             }
