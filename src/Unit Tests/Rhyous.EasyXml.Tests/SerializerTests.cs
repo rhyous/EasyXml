@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Rhyous.EasyXml.Tests
 {
@@ -28,6 +29,19 @@ namespace Rhyous.EasyXml.Tests
             
             // Act
             Serializer.SerializeToXml(a, "file.xml");
+
+            // Assert
+            // Just make sure this runs.
+        }
+
+        [TestMethod]
+        public void MethodWithFourParametersWorks()
+        {
+            // Arrange
+            var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
+
+            // Act
+            Serializer.SerializeToXml(a, true, new XmlSerializerNamespaces(), Encoding.UTF8);
 
             // Assert
             // Just make sure this runs.
