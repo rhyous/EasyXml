@@ -22,13 +22,65 @@ namespace Rhyous.EasyXml.Tests
     public class SerializerTests
     {
         [TestMethod]
+        public void OnlyOneParameterNeededToCreateString()
+        {
+            // Arrange
+            var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
+
+            // Act
+            Serializer.SerializeToXml(a);
+
+            // Assert
+            // Just make sure this runs.
+        }
+
+        [TestMethod]
+        public void TwoParametesToCreateStringWorks()
+        {
+            // Arrange
+            var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
+
+            // Act
+            Serializer.SerializeToXml(a, true);
+
+            // Assert
+            // Just make sure this runs.
+        }
+
+        [TestMethod]
+        public void ThreeParametesToCreateStringWorks()
+        {
+            // Arrange
+            var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
+
+            // Act
+            Serializer.SerializeToXml(a, true, null);
+
+            // Assert
+            // Just make sure this runs.
+        }
+
+        [TestMethod]
         public void OnlyTwoParameterNeededToCreateFile()
         {
             // Arrange
             var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
-            
+
             // Act
             Serializer.SerializeToXml(a, "file.xml");
+
+            // Assert
+            // Just make sure this runs.
+        }
+
+        [TestMethod]
+        public void MethodWithThreeParametersWorks()
+        {
+            // Arrange
+            var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
+
+            // Act
+            Serializer.SerializeToXml(a, "file.xml", true);
 
             // Assert
             // Just make sure this runs.

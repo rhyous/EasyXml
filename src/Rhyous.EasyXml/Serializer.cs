@@ -56,12 +56,12 @@
             textWriter.Close();
         }
 
-        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null, bool useDefaultNamespaces = false)
+        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = true, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null, bool useDefaultNamespaces = false)
         {
             Instance.ToXml(t, outFilename, inOmitXmlDeclaration, inNameSpaces, inEncoding);
         }
 
-        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, bool useDefaultNamespaces = false, Encoding inEncoding = null)
+        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration, bool useDefaultNamespaces, Encoding inEncoding = null)
         {
             Instance.ToXml(t, outFilename, inOmitXmlDeclaration, null, inEncoding, useDefaultNamespaces);
         }
