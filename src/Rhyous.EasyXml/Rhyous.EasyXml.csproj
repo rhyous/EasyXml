@@ -4,9 +4,18 @@
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
     <Authors>Jared Barneck (Rhyous)</Authors>
     <Company>Rhyous Publishing LLC</Company>
-    <Copyright>Copyright © Rhyous Publishing LLC 2016</Copyright>
     <RootNamespace>Rhyous.EasyXml</RootNamespace>
     <AssemblyName>Rhyous.EasyXml</AssemblyName>
+    <PackageProjectUrl>https://github.com/rhyous/EasyXml</PackageProjectUrl>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageIcon>EasyXml.ico</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/rhyous/EasyXml</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>xml serialization pretty</PackageTags>
+    <Copyright>Copyright (c) 2016, Jared Barneck (Rhyous)</Copyright>
+    <Description>A library to make xml serialization and deserialization easy.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
