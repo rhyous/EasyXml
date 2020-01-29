@@ -8,7 +8,7 @@
     <AssemblyName>Rhyous.EasyXml</AssemblyName>
     <PackageProjectUrl>https://github.com/rhyous/EasyXml</PackageProjectUrl>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <PackageIcon>EasyXml.ico</PackageIcon>
+    <PackageIcon>EasyXml.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/rhyous/EasyXml</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
@@ -23,7 +23,7 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="EasyXml.ico">
+    <None Include="EasyXml.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
