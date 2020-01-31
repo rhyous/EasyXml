@@ -11,6 +11,8 @@ dotnet_csproj:
   informational_version: '{version}'
 before_build:
 - pwsh: nuget restore src/Rhyous.EasyXml.sln
+configuration:
+  Release
 build:
   project: src/Rhyous.EasyXml.sln
   verbosity: minimal
@@ -20,6 +22,8 @@ test:
     - slow
 artifacts:
   - path: '**\*.nupkg'
+nuget:
+  disable_publish_on_pr: true
 deploy:
 - provider: NuGet
   on:
