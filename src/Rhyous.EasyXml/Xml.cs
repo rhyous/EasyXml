@@ -14,16 +14,6 @@ namespace Rhyous.EasyXml
         }
 
         /// <summary>
-        /// And enumeration to select UTF8 or UTF16 encoding. This is used because the default UTF8 
-        /// and Unicode encoding types don't capitalize the UTF characters in the Xml declaration.
-        /// </summary>
-        public enum XmlEncoding
-        {
-            UTF8, // By being first, it is the default
-            UTF16
-        };
-
-        /// <summary>
         /// The original Xml text as is.
         /// </summary>
         public string Text { get; private set; }
@@ -34,8 +24,7 @@ namespace Rhyous.EasyXml
         public string LinearizeXml
         {
             get { return _LinearizeXml ?? (_LinearizeXml = Clean(Document, LinearizedSettings)); }
-        }
-        private string _LinearizeXml;
+        } private string _LinearizeXml;
 
         /// <summary>
         /// And XDocument representation of the Xml. It uses the Linearized Xml not the original text.
@@ -43,8 +32,7 @@ namespace Rhyous.EasyXml
         public XDocument Document
         {
             get { return _Document ?? (_Document = XDocument.Parse(GetLinearizedXml(Text))); }
-        }
-        private XDocument _Document;
+        } private XDocument _Document;
 
         /// <summary>
         /// The Xml with each element properly indented on a separate line. The data is trimmed and no more than a single space anywhere.
@@ -52,15 +40,14 @@ namespace Rhyous.EasyXml
         public string PrettyXml
         {
             get { return _PrettyXml ?? (_PrettyXml = Clean(Document, PrettySettings)); }
-        }
-        private string _PrettyXml;
+        } private string _PrettyXml;
 
         /// <summary>
         /// An enum that specifies whether to use UTF-8 or Unicode (UTF-16).
         /// Changing the encoding shouldn't change the original Text but pretty and linearized 
         /// versions of the Xml should change as well as the stream.
         /// </summary>
-        public XmlEncoding Encoding { get; set; }
+        public Encoding Encoding { get; set; }
 
         /// <summary>
         /// A method that outputs the Xml as a stream. It outputs using the correct Encoding.
@@ -93,15 +80,32 @@ namespace Rhyous.EasyXml
         /// <returns>The correct Encoding.</returns>
         private Encoding GetEncoding()
         {
-            switch (Encoding)
+            if (Encoding != null)
+                return Encoding;
+            string firstLine = null;
+            if (Text.StartsWith("<?xml"))
+                firstLine = Regex.Match(Text, "<\\?xml[^>]*>")?.Value;
+            if (string.IsNullOrWhiteSpace(firstLine))
+                return Encoding = Encoding.UTF8;
+            var nameValues = firstLine.Split();
+            foreach (var nameValue in nameValues)
             {
-                case XmlEncoding.UTF8:
-                    return XmlUTF8Encoding.Instance;
-                case XmlEncoding.UTF16:
-                    return XmlUnicode.Instance;
-                default:
-                    return XmlUnicode.Instance;
+                if (nameValue.StartsWith("encoding", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    var pair = nameValue.Split('=');
+                    if (pair.Length == 2 && !string.IsNullOrWhiteSpace(pair[1]))
+                    {
+                        pair[1] = pair[1].Substring(0, pair[1].LastIndexOf('"')).Trim('"');
+                        foreach (char c in pair[1])
+                        {
+                            if (char.IsLetter(c) && char.IsLower(c))
+                                return Encoding = Encoding.GetEncoding(pair[1]);
+                        }
+                        return Encoding = new UpperCaseEncoding(pair[1]);
+                    }
+                }
             }
+            return Encoding.UTF8;
         }
 
         /// <summary>

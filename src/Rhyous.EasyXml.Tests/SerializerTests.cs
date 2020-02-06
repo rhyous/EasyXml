@@ -126,5 +126,33 @@ namespace Rhyous.EasyXml.Tests
             // Assert
             Assert.AreEqual(expectedXml, xml);
         }
+
+        [TestMethod]
+        public void UseDefaultNamespacesStatic_alternateEncoding_Tests()
+        {
+            // Arrange
+            var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
+            var expectedXml = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?><A xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
+
+            // Act
+            var xml = Serializer.SerializeToXml(a, false, null, Encoding.GetEncoding("ISO-8859-1"), true);
+
+            // Assert
+            Assert.AreEqual(expectedXml, xml);
+        }
+
+        [TestMethod]
+        public void UseDefaultNamespacesStatic_AlternateUpperCaseEncoding_Tests()
+        {
+            // Arrange
+            var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
+            var expectedXml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><A xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
+
+            // Act
+            var xml = Serializer.SerializeToXml(a, false, null, new UpperCaseEncoding("ISO-8859-1"), true);
+
+            // Assert
+            Assert.AreEqual(expectedXml, xml);
+        }
     }
 }

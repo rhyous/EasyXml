@@ -73,7 +73,7 @@ namespace Rhyous.EasyXml.Tests
             // Arrange
             Xml xml = new Xml(UglyUtf16Xml)
             {
-                Encoding = Xml.XmlEncoding.UTF16
+                Encoding = new UpperCaseEncoding("UTF-16")
             };
 
             // Act
@@ -89,7 +89,7 @@ namespace Rhyous.EasyXml.Tests
             // Arrange
             Xml xml = new Xml(UglyUtf16Xml)
             {
-                Encoding = Xml.XmlEncoding.UTF16
+                Encoding = new UpperCaseEncoding("UTF-16")
             };
 
             // Act
@@ -105,7 +105,7 @@ namespace Rhyous.EasyXml.Tests
             // Arrange
             Xml xml = new Xml(UglyUtf8Xml)
             {
-                Encoding = Xml.XmlEncoding.UTF8
+                Encoding = new UpperCaseEncoding("UTF-8")
             };
 
             // Act
@@ -125,7 +125,7 @@ namespace Rhyous.EasyXml.Tests
             // Arrange
             Xml xml = new Xml(UglyUtf16Xml)
             {
-                Encoding = Xml.XmlEncoding.UTF16
+                Encoding = new UpperCaseEncoding("UTF-16")
             };
 
             // Act

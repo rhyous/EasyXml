@@ -48,9 +48,9 @@
                 ns.Add("", "");
             }
             var serializer = new XmlSerializer(t.GetType());
-            var textWriter = (TextWriter)new StreamWriter(outFilename);
-            if (inEncoding != null && inEncoding.Equals(Encoding.UTF8))
-                textWriter = new Utf8StreamWriter(outFilename);
+            TextWriter textWriter = (inEncoding == null)
+                                  ? new StreamWriter(outFilename)
+                                  : new StreamWriterWithEncoding(outFilename, inEncoding);
             var xmlWriter = XmlWriter.Create(textWriter, new XmlWriterSettings { OmitXmlDeclaration = inOmitXmlDeclaration });
             serializer.Serialize(xmlWriter, t, ns);
             textWriter.Close();
@@ -85,10 +85,8 @@
                 ns.Add("", "");
             }
             var serializer = new XmlSerializer(t.GetType());
-            var textWriter = (TextWriter)new StringWriter();
-            if (inEncoding != null && inEncoding.Equals(Encoding.UTF8))
-                textWriter = new Utf8StringWriter();
-            var xmlWriter = XmlWriter.Create(textWriter, new XmlWriterSettings { OmitXmlDeclaration = inOmitXmlDeclaration });
+            TextWriter textWriter = inEncoding == null ? new StringWriter() : new StringWriterWithEncoding(inEncoding);
+            var xmlWriter = XmlWriter.Create(textWriter, new XmlWriterSettings { OmitXmlDeclaration = inOmitXmlDeclaration});
             serializer.Serialize(xmlWriter, t, ns);
             return textWriter.ToString();
         }

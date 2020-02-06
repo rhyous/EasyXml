@@ -8,17 +8,15 @@ namespace Rhyous.EasyXml
     /// </summary>
     public sealed class StringWriterWithEncoding : StringWriter
     {
-        private readonly Encoding _Encoding;
+        private Encoding _Encoding;
+
+        public StringWriterWithEncoding(Encoding encoding) 
+               => _Encoding = encoding;
 
         public StringWriterWithEncoding(StringBuilder builder, Encoding encoding)
-            : base(builder)
-        {
-            _Encoding = encoding;
-        }
+               : base(builder) 
+               => _Encoding = encoding;
 
-        public override Encoding Encoding
-        {
-            get { return _Encoding; }
-        }
+        public override Encoding Encoding => _Encoding;
     }
 }
