@@ -55,7 +55,7 @@ namespace Rhyous.EasyXml.Tests
 
         private static string ToSafeString(this char c)
         {
-            if (Char.IsControl(c) || Char.IsWhiteSpace(c))
+            if (char.IsControl(c) || char.IsWhiteSpace(c))
             {
                 switch (c)
                 {
@@ -72,7 +72,7 @@ namespace Rhyous.EasyXml.Tests
                     case '\f':
                         return @"\f";
                     default:
-                        return String.Format("\\u{0:X};", (int)c);
+                        return string.Format("\\u{0:X};", (int)c);
                 }
             }
             return c.ToString(CultureInfo.InvariantCulture);

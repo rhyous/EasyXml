@@ -28,7 +28,7 @@
         }
 
         private static volatile IEasyXmlSerializer _Instance;
-        private static object syncRoot = new Object();
+        private static object syncRoot = new object();
 
         private Serializer()
         {
@@ -97,7 +97,7 @@
         }
 
         /// <inheritdoc />
-        public T FromXml<T>(String inFilename)
+        public T FromXml<T>(string inFilename)
         {
             if (string.IsNullOrWhiteSpace(inFilename))
             {

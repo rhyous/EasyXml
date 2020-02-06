@@ -16,7 +16,7 @@ namespace Rhyous.EasyXml.Tests
         public string UglyUtf16Xml = "<?xml version=\"1.0\"\r\nencoding=\"UTF-16\"?>\r\n<Person>\r\n\r\n<FirstName>\r\n    John\r\n        </FirstName>\r\n\r\n<MiddleName>\r\n    Al\r\n    Leon\r\n                </MiddleName>\r\n  <LastName>\r\n    \r\n\r\n\r\nDoe\r\n        </LastName>\r\n\r\n\r\n</Person>";
 
         [TestMethod]
-        public void TestMethodLinearize()
+        public void Xml_Linearize()
         {
             // Arrange
             Xml xml = new Xml(PrettyUtf8Xml);
@@ -29,7 +29,7 @@ namespace Rhyous.EasyXml.Tests
         }
 
         [TestMethod]
-        public void TestMethodPretty()
+        public void Xml_Pretty()
         {
             // Arrange
             Xml xml = new Xml(LinearUtf8Xml);
@@ -42,7 +42,20 @@ namespace Rhyous.EasyXml.Tests
         }
 
         [TestMethod]
-        public void TestMethodLinearizeUgly()
+        public void Xml_Stream()
+        {
+            // Arrange
+            Xml xml = new Xml(LinearUtf8Xml);
+
+            // Act
+            var actual = xml.ToStream();
+
+            // Assert
+            Assert.AreEqual(xml.PrettyXml, Encoding.UTF8.GetString(((MemoryStream)actual).ToArray()));
+        }
+
+        [TestMethod]
+        public void Xml_LinearizeUgly()
         {
             // Arrange
             Xml xml = new Xml(UglyUtf8Xml);
@@ -55,7 +68,7 @@ namespace Rhyous.EasyXml.Tests
         }
 
         [TestMethod]
-        public void TestMethodMakeUglyPretty()
+        public void Xml_MakeUglyPretty()
         {
             // Arrange
             Xml xml = new Xml(UglyUtf8Xml);
@@ -68,7 +81,7 @@ namespace Rhyous.EasyXml.Tests
         }
 
         [TestMethod]
-        public void TestMethodLinearizeUglyUtf16()
+        public void Xml_LinearizeUglyUtf16()
         {
             // Arrange
             Xml xml = new Xml(UglyUtf16Xml)
@@ -84,7 +97,7 @@ namespace Rhyous.EasyXml.Tests
         }
 
         [TestMethod]
-        public void TestMethodMakeUglyPrettyUtf16()
+        public void Xml_MakeUglyPrettyUtf16()
         {
             // Arrange
             Xml xml = new Xml(UglyUtf16Xml)
@@ -100,7 +113,7 @@ namespace Rhyous.EasyXml.Tests
         }
 
         [TestMethod]
-        public void TestMethodStreamIsUtf8()
+        public void Xml_StreamIsUtf8()
         {
             // Arrange
             Xml xml = new Xml(UglyUtf8Xml)
@@ -120,7 +133,7 @@ namespace Rhyous.EasyXml.Tests
         }
 
         [TestMethod]
-        public void TestMethodStreamIsUtf16()
+        public void Xml_StreamIsUtf16()
         {
             // Arrange
             Xml xml = new Xml(UglyUtf16Xml)
@@ -144,7 +157,7 @@ namespace Rhyous.EasyXml.Tests
         }
 
         [TestMethod]
-        public void TestMethodPrettyWithTabs()
+        public void Xml_PrettyWithTabs()
         {
             // Arrange
             Xml xml = new Xml(LinearUtf8Xml)
@@ -160,7 +173,7 @@ namespace Rhyous.EasyXml.Tests
         }
 
         [TestMethod]
-        public void TestMethodStreamUtf8IsDifferentThanStreamUtf16()
+        public void Xml_StreamUtf8IsDifferentThanStreamUtf16()
         {
             const string text = "Hello, world!";
 
