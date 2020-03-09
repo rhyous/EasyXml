@@ -124,28 +124,35 @@ namespace Rhyous.EasyXml
             }
         }
 
+        public XmlWriterSettings PrettySettings
+        {
+            get { return _PrettySettings ?? (_PrettySettings = GetDefaultPrettySettings(GetEncoding())); }
+            set { _PrettySettings = value; }
+        } private XmlWriterSettings _PrettySettings;
+
         /// <summary>
         /// XmlWriterSettings for Pretty Xml.
         /// </summary>
-        private XmlWriterSettings PrettySettings
+        public static XmlWriterSettings GetDefaultPrettySettings(Encoding encoding)
         {
-            get
+            return new XmlWriterSettings
             {
-                return new XmlWriterSettings
-                {
-                    Encoding = GetEncoding(),
-                    Indent = true,
-                    IndentChars = string.IsNullOrEmpty(IndentCharacters) ? "  " : IndentCharacters,
-                    NewLineOnAttributes = false,
-                    NewLineHandling = NewLineHandling.Replace
-                };
-            }
+                Encoding = encoding,
+                Indent = true,
+                IndentChars = "  ",
+                NewLineOnAttributes = false,
+                NewLineHandling = NewLineHandling.Replace
+            };
         }
 
         /// <summary>
         /// The characters to use for indenting Pretty Xml
         /// </summary>
-        public string IndentCharacters { get; set; }
+        public string IndentCharacters
+        {
+            get => PrettySettings.IndentChars;
+            set => PrettySettings.IndentChars = value;
+        }        
 
         /// <summary>
         /// The method that uses XDocument to do make clean (pretty or linearized) Xml

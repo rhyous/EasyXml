@@ -160,10 +160,22 @@ namespace Rhyous.EasyXml.Tests
         public void Xml_PrettyWithTabs()
         {
             // Arrange
-            Xml xml = new Xml(LinearUtf8Xml)
-            {
-                IndentCharacters = "\t"
-            };
+            Xml xml = new Xml(LinearUtf8Xml);
+            xml.PrettySettings.IndentChars = "\t";
+
+            // Act
+            var actual = xml.PrettyXml;
+
+            // Assert
+            actual.ShouldEqualWithDiff(PrettyUtf8XmlWithTabs);
+        }
+
+        [TestMethod]
+        public void Xml_PrettyWithTabs_SetWithLegacyProperty()
+        {
+            // Arrange
+            Xml xml = new Xml(LinearUtf8Xml);
+            xml.IndentCharacters = "\t";
 
             // Act
             var actual = xml.PrettyXml;
@@ -181,6 +193,22 @@ namespace Rhyous.EasyXml.Tests
             var utf16 = Encoding.Unicode.GetBytes(text);
 
             Assert.AreNotEqual(utf8.Length, utf16.Length);
+        }
+
+        [TestMethod]
+        public void UseDefaultNamespacesStatic_NoFirstLineXmlTag_Tests()
+        {
+            // Arrange
+            var xmltext = "<A><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
+            var expectedXml = "<A>\r\n  <Id>1</Id>\r\n  <Name>A1</Name>\r\n  <Bs>\r\n    <B>\r\n      <Id>1</Id>\r\n      <Name>B1</Name>\r\n    </B>\r\n    <B>\r\n      <Id>1</Id>\r\n      <Name>B2</Name>\r\n    </B>\r\n  </Bs>\r\n</A>";
+            var xml = new Xml(xmltext);
+            xml.PrettySettings.OmitXmlDeclaration = true;
+
+            // Act
+            var actual = xml.PrettyXml;
+
+            // Assert
+            Assert.AreEqual(expectedXml, actual);
         }
     }
 }

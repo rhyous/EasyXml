@@ -154,5 +154,19 @@ namespace Rhyous.EasyXml.Tests
             // Assert
             Assert.AreEqual(expectedXml, xml);
         }
+
+        [TestMethod]
+        public void UseDefaultNamespacesStatic_NoFirstLineXmlTag_Tests()
+        {
+            // Arrange
+            var a = new A { Id = 1, Name = "A1", Bs = new List<B> { new B { Id = 1, Name = "B1" }, new B { Id = 1, Name = "B2" } } };
+            var expectedXml = "<A><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
+
+            // Act
+            var xml = Serializer.SerializeToXml(a, true, null, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedXml, xml);
+        }
     }
 }
