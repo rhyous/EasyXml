@@ -199,7 +199,7 @@ namespace Rhyous.EasyXml.Tests
         public void UseDefaultNamespacesStatic_NoFirstLineXmlTag_Tests()
         {
             // Arrange
-            var xmltext = "<A><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
+            var xmltext = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><A><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
             var expectedXml = "<A>\r\n  <Id>1</Id>\r\n  <Name>A1</Name>\r\n  <Bs>\r\n    <B>\r\n      <Id>1</Id>\r\n      <Name>B1</Name>\r\n    </B>\r\n    <B>\r\n      <Id>1</Id>\r\n      <Name>B2</Name>\r\n    </B>\r\n  </Bs>\r\n</A>";
             var xml = new Xml(xmltext);
             xml.PrettySettings.OmitXmlDeclaration = true;
