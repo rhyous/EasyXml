@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.IO;
 using System.Text;
 
@@ -8,12 +9,12 @@ namespace Rhyous.EasyXml.Tests
     public class XmlTests
     {
         public string LinearUtf8Xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Person><FirstName>John</FirstName><MiddleName>Al Leon</MiddleName><LastName>Doe</LastName></Person>";
-        public string PrettyUtf8Xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Person>\r\n  <FirstName>John</FirstName>\r\n  <MiddleName>Al Leon</MiddleName>\r\n  <LastName>Doe</LastName>\r\n</Person>";
-        public string PrettyUtf8XmlWithTabs = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Person>\r\n\t<FirstName>John</FirstName>\r\n\t<MiddleName>Al Leon</MiddleName>\r\n\t<LastName>Doe</LastName>\r\n</Person>";
-        public string UglyUtf8Xml = "<?xml version=\"1.0\"\r\nencoding=\"UTF-8\"?>\r\n<Person>\r\n\r\n<FirstName>\r\n    John\r\n        </FirstName>\r\n\r\n<MiddleName>\r\n    Al\r\n    Leon\r\n                </MiddleName>\r\n  <LastName>\r\n    \r\n\r\n\r\nDoe\r\n        </LastName>\r\n\r\n\r\n</Person>";
-        public string LinearUtf16Xml = "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Person><FirstName>John</FirstName><MiddleName>Al Leon</MiddleName><LastName>Doe</LastName></Person>";
-        public string PrettyUtf16Xml = "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\r\n<Person>\r\n  <FirstName>John</FirstName>\r\n  <MiddleName>Al Leon</MiddleName>\r\n  <LastName>Doe</LastName>\r\n</Person>";
-        public string UglyUtf16Xml = "<?xml version=\"1.0\"\r\nencoding=\"UTF-16\"?>\r\n<Person>\r\n\r\n<FirstName>\r\n    John\r\n        </FirstName>\r\n\r\n<MiddleName>\r\n    Al\r\n    Leon\r\n                </MiddleName>\r\n  <LastName>\r\n    \r\n\r\n\r\nDoe\r\n        </LastName>\r\n\r\n\r\n</Person>";
+        public string PrettyUtf8Xml = $"<?xml version=\"1.0\" encoding=\"UTF-8\"?>{Environment.NewLine}<Person>{Environment.NewLine}  <FirstName>John</FirstName>{Environment.NewLine}  <MiddleName>Al Leon</MiddleName>{Environment.NewLine}  <LastName>Doe</LastName>{Environment.NewLine}</Person>";
+        public string PrettyUtf8XmlWithTabs = $"<?xml version=\"1.0\" encoding=\"UTF-8\"?>{Environment.NewLine}<Person>{Environment.NewLine}\t<FirstName>John</FirstName>{Environment.NewLine}\t<MiddleName>Al Leon</MiddleName>{Environment.NewLine}\t<LastName>Doe</LastName>{Environment.NewLine}</Person>";
+        public string UglyUtf8Xml = $"<?xml version=\"1.0\"{Environment.NewLine}encoding=\"UTF-8\"?>{Environment.NewLine}<Person>{Environment.NewLine}{Environment.NewLine}<FirstName>{Environment.NewLine}    John{Environment.NewLine}        </FirstName>{Environment.NewLine}{Environment.NewLine}<MiddleName>{Environment.NewLine}    Al{Environment.NewLine}    Leon{Environment.NewLine}                </MiddleName>{Environment.NewLine}  <LastName>{Environment.NewLine}    {Environment.NewLine}{Environment.NewLine}{Environment.NewLine}Doe{Environment.NewLine}        </LastName>{Environment.NewLine}{Environment.NewLine}{Environment.NewLine}</Person>";
+        public string LinearUtf16Xml = $"<?xml version=\"1.0\" encoding=\"UTF-16\"?><Person><FirstName>John</FirstName><MiddleName>Al Leon</MiddleName><LastName>Doe</LastName></Person>";
+        public string PrettyUtf16Xml = $"<?xml version=\"1.0\" encoding=\"UTF-16\"?>{Environment.NewLine}<Person>{Environment.NewLine}  <FirstName>John</FirstName>{Environment.NewLine}  <MiddleName>Al Leon</MiddleName>{Environment.NewLine}  <LastName>Doe</LastName>{Environment.NewLine}</Person>";
+        public string UglyUtf16Xml = $"<?xml version=\"1.0\"{Environment.NewLine}encoding=\"UTF-16\"?>{Environment.NewLine}<Person>{Environment.NewLine}{Environment.NewLine}<FirstName>{Environment.NewLine}    John{Environment.NewLine}        </FirstName>{Environment.NewLine}{Environment.NewLine}<MiddleName>{Environment.NewLine}    Al{Environment.NewLine}    Leon{Environment.NewLine}                </MiddleName>{Environment.NewLine}  <LastName>{Environment.NewLine}    {Environment.NewLine}{Environment.NewLine}{Environment.NewLine}Doe{Environment.NewLine}        </LastName>{Environment.NewLine}{Environment.NewLine}{Environment.NewLine}</Person>";
 
         [TestMethod]
         public void Xml_Linearize()
@@ -200,7 +201,7 @@ namespace Rhyous.EasyXml.Tests
         {
             // Arrange
             var xmltext = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><A><Id>1</Id><Name>A1</Name><Bs><B><Id>1</Id><Name>B1</Name></B><B><Id>1</Id><Name>B2</Name></B></Bs></A>";
-            var expectedXml = "<A>\r\n  <Id>1</Id>\r\n  <Name>A1</Name>\r\n  <Bs>\r\n    <B>\r\n      <Id>1</Id>\r\n      <Name>B1</Name>\r\n    </B>\r\n    <B>\r\n      <Id>1</Id>\r\n      <Name>B2</Name>\r\n    </B>\r\n  </Bs>\r\n</A>";
+            var expectedXml = $"<A>{Environment.NewLine}  <Id>1</Id>{Environment.NewLine}  <Name>A1</Name>{Environment.NewLine}  <Bs>{Environment.NewLine}    <B>{Environment.NewLine}      <Id>1</Id>{Environment.NewLine}      <Name>B1</Name>{Environment.NewLine}    </B>{Environment.NewLine}    <B>{Environment.NewLine}      <Id>1</Id>{Environment.NewLine}      <Name>B2</Name>{Environment.NewLine}    </B>{Environment.NewLine}  </Bs>{Environment.NewLine}</A>";
             var xml = new Xml(xmltext);
             xml.PrettySettings.OmitXmlDeclaration = true;
 
