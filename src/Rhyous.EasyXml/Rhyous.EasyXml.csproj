@@ -24,7 +24,8 @@
   <PropertyGroup>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\Rhyous.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Rhyous.snk</AssemblyOriginatorKeyFile>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,6 +34,10 @@
       <PackagePath></PackagePath>
     </None>
     <None Include="EasyXml.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Update="Readme.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

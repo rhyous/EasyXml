@@ -7,7 +7,7 @@
 
     <SignAssembly>True</SignAssembly>
 
-    <AssemblyOriginatorKeyFile>..\Rhyous.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Rhyous.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
