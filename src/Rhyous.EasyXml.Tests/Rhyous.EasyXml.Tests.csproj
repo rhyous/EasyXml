@@ -4,6 +4,10 @@
     <TargetFrameworks>net461;netcoreapp3.1</TargetFrameworks>
 
     <IsPackable>false</IsPackable>
+
+    <SignAssembly>True</SignAssembly>
+
+    <AssemblyOriginatorKeyFile>C:\dev\Rhyous\EasyXml\src\Rhyous.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
