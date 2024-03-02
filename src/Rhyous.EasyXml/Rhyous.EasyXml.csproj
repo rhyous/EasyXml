@@ -24,7 +24,7 @@
   <PropertyGroup>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>C:\dev\Rhyous\EasyXml\src\Rhyous.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Rhyous.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
