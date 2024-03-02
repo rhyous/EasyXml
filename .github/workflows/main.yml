@@ -55,18 +55,18 @@ jobs:
       - name: Get Build Number with base offset
         uses: mlilback/build-number@v1
         with:
-          base: -7
+          base: -8
           run-id: ${{github.run_number}}
         
       # Build - Main
       - name: Build source
         if: github.ref == 'refs/heads/master'
-        run: dotnet build --configuration Release --no-restore -p:AssemblyVersion=1.3.0 -p:FileVersion=1.3.${{env.BUILD_NUMBER}} -p:Version=2.1.${{env.BUILD_NUMBER}}
+        run: dotnet build --configuration Release --no-restore -p:AssemblyVersion=1.3.0 -p:FileVersion=1.3.${{env.BUILD_NUMBER}} -p:Version=1.3.${{env.BUILD_NUMBER}}
 
       # Build - vNext
       - name: Build source
         if: github.ref == 'refs/heads/vNext'
-        run: dotnet build --configuration Release --no-restore -p:AssemblyVersion=2.0.0 -p:FileVersion=2.0.${{env.BUILD_NUMBER}} -p:Version=3.0.${{env.BUILD_NUMBER}} --version-suffix alpha
+        run: dotnet build --configuration Release --no-restore -p:AssemblyVersion=2.0.0 -p:FileVersion=2.0.${{env.BUILD_NUMBER}} -p:Version=2.0.${{env.BUILD_NUMBER}} --version-suffix alpha
         
       # Run Unit Tests
       # Add coverlet.collector nuget package to test project - 'dotnet add <TestProject.cspoj> package coverlet
