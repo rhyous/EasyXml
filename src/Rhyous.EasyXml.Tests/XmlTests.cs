@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -129,7 +130,9 @@ namespace Rhyous.EasyXml.Tests
                 actual.CopyTo(memoryStream);
                 var bytes = memoryStream.ToArray();
                 // Assert
-                Assert.AreEqual(154, bytes.Length);
+                // Windows vs Linux line endings matter
+                var dict = new Dictionary<string, int> { { "\r\n", 154 }, { "\n", 149 } };
+                Assert.AreEqual(dict[Environment.NewLine], bytes.Length);
             }
         }
 
@@ -152,8 +155,10 @@ namespace Rhyous.EasyXml.Tests
                 // Assert
                 // 310 is twice the size of 154, 308, but add 2 bytes because
                 // UTF-8 is 5 characters but UTF-16 is 6 characters so it is 
-                // one character longer.John
-                Assert.AreEqual(310, bytes.Length);
+                // one character longer. 
+                // Windows vs Linux line endings matter
+                var dict = new Dictionary<string, int> { { "\r\n", 310 }, { "\n", 300 } };
+                Assert.AreEqual(dict[Environment.NewLine], bytes.Length);
             }
         }
 
